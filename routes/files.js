@@ -17,7 +17,7 @@ let upload = multer({ storage, limits:{ fileSize: 1000000 * 100 }, }).single('my
 router.post('/', (req, res) => {
     upload(req, res, async (err) => {
       if (err) {
-        return res.status(500).send({ error: err.message });
+        return res.status(500).send({ error: err.message }); 
       }
         const file = new File({
             filename: req.file.filename,
@@ -44,12 +44,12 @@ router.post('/send', async (req, res) => {
     file.sender = emailFrom;
     file.receiver = emailTo;
     const response = await file.save();
-    // send mail
+    // send mails
     const sendMail = require('../services/mailService');
     sendMail({
       from: emailFrom,
       to: emailTo,
-      subject: 'inShare file sharing',
+      subject: 'shareD file sharing',
       text: `${emailFrom} shared a file with you.`,
       html: require('../services/emailTemplate')({
                 emailFrom, 

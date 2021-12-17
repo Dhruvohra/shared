@@ -10,4 +10,5 @@ const fileSchema = new Schema({
     receiver: { type: String, required: false },
 }, { timestamps: true });
 
+//exporting module
 module.exports = mongoose.model('File', fileSchema);
